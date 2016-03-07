@@ -160,7 +160,6 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   byebug
-  coffee-rails (~> 4.1.0)
   foundation-rails (~> 5.5)
   gibbon
   high_voltage
