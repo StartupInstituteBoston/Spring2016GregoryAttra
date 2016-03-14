@@ -1,0 +1,25 @@
+<h1>Restaurants</h1>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Address</th>
+		<th>Phone</th>
+	</tr>
+
+	<% @restaurants.each do |restaurant| %>
+		<tr>
+			<td><%= restaurant.name %></td>
+			<td><%= display_address(restaurant) %></td>
+			<td><%= restaurant.description %></td>
+			<td><%= restaurant.phone %></td>
+				<td><%= link_to("Show", :controller => "restaurants", :action => "show") %></td>
+				<td><%= link_to("Edit", :controller => "restaurants", :action => "edit") %></td>
+				<td><%= link_to("Delete", :controller => "restaurants", :action => "destroy") %></td>
+			</tr>
+		</tr>
+	<% end %>
+	<tr>
+		<td><%= link_to("New", :controller => "restaurants", :action => "new") %></td>
+	</tr>
+</table>
