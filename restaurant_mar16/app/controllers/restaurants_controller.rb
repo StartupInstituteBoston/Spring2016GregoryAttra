@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
   	end
 
     def edit 
-      @restaurants = Restaurant.find(params[:id])
+      @restaurant = Restaurant.find(params[:id])
     end
 
   	def update
@@ -28,13 +28,21 @@ class RestaurantsController < ApplicationController
   	end
 
   	def destroy
-  		@restaurant.find(params[:id])
+  		@restaurant = Restaurant.find(params[:id])
   		@restaurant.destroy
+      redirect_to restaurants_url
   	end
+
+    def loadMap
+      @restaurants.each do |restaurant|
+        paramString = @paramString + "--5--"
+      end
+
+      puts paramString
+    end
 
   	private 
     def restaurant_params
 			params.require(:restaurant).permit(:id, :address, :city, :state, :zipcode, :description, :name, :phone)	
   	end
-
 end

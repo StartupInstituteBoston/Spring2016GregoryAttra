@@ -1,0 +1,9 @@
+<h1><%= @restaurant.name %></h1>
+<p><%= @restaurant.description %></p>
+<p><%= @restaurant.phone %></p>
+<p><%= @restaurant.address %></p>
+
+<td><%= link_to("Edit", :controller => :restaurants, :action => :edit, :id => @restaurant.id) %></td>
+<td><%= button_to "Delete", { action: "destroy", id: @restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+<%= link_to("Home", :controller => :restaurants, :action => :index) %>
