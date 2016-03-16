@@ -1,5 +1,5 @@
 <div>
-	<%= link_to "Back", { action: "index" }, :class => "waves-effect waves-light btn-large red darken-2" %>
+	<a href="#!" class=" modal-action modal-close waves-effect waves-light btn-large red darken-2">Close</a>
 </div>
 <div class="row">
   <div class="col s12">
@@ -8,9 +8,6 @@
         <%= 
 				address = @restaurant.address
 				address = address.split(' ').join('+')
-				puts address
-
-				i = (@restaurant.id).to_s
 
 				request = 'https://maps.googleapis.com/maps/api/staticmap?center='+address+'&zoom=16&size=800x200&markers=color:blue%7Clabel:%7C'+address+'&key=AIzaSyC8XD1eo56__LnnKnOZsfozBdNSOPoup3A'
 
@@ -24,7 +21,7 @@
         <p><%= @restaurant.description %></p>
       </div>
       <div class="card-action">
-        <a><%= link_to("Edit", :controller => :restaurants, :action => :edit, :id => @restaurant.id) %></a>
+        <%= link_to "Edit", {:action => :edit, :id => @restaurant.id}, class: 'editDetailRestaurant' %>
         <a><%= link_to "Delete", { action: "destroy", id: @restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %></a>
       </div>
     </div>

@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
 
   	def new
   		@restaurant = Restaurant.new
+      render layout: false if request.xhr?
   	end
 
     def create
@@ -15,10 +16,12 @@ class RestaurantsController < ApplicationController
 
   	def show
   		@restaurant = Restaurant.find(params[:id])
+      render layout: false if request.xhr?
   	end
 
     def edit 
       @restaurant = Restaurant.find(params[:id])
+      render layout: false if request.xhr?
     end
 
   	def update
@@ -32,14 +35,6 @@ class RestaurantsController < ApplicationController
   		@restaurant.destroy
       redirect_to restaurants_url
   	end
-
-    def loadMap
-      @restaurants.each do |restaurant|
-        paramString = @paramString + "--5--"
-      end
-
-      puts paramString
-    end
 
   	private 
     def restaurant_params

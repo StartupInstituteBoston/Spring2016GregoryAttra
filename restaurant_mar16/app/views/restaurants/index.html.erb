@@ -6,7 +6,7 @@
           <p style="font-size:17px">Here you can view, edit and delete restaurants, as well as add new ones.</p>
         </div>
         <div class="card-action" style="text-align:center">
-          <a><%= link_to "Add Restaurant", { action: "new" } %></a>
+          <%= link_to "Add Restaurant", { action: "new" }, class: 'addRestaurant' %>
         </div>
       </div>
   </div>
@@ -30,8 +30,8 @@
 	    <div class="card-content">
 	      <span class="card-title activator grey-text text-darken-4"><%= restaurant.name %><i class="material-icons right">more_vert</i></span>
 	      <div class="card-action" style="text-align:center">
-	        <a href="#"><%= link_to("More", :controller => :restaurants, :action => :show, :id => restaurant.id) %></a>
-	        <a href="#"><%= link_to("Edit", :controller => :restaurants, :action => :edit, :id => restaurant.id) %></a>
+	        <a href="#"><%= link_to "More", {:action => :show, :id => restaurant.id}, class: 'detailRestaurant' %></a>
+	        <a href="#"><%= link_to "Edit", {:action => :edit, :id => restaurant.id}, class: 'editRestaurant' %></a>
 	        <a><%= link_to "Delete", { action: "destroy", id: restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %></a>
 	      </div>
 	    </div>
@@ -43,3 +43,10 @@
 	</div>
 	<% end %>
 </div>
+
+<div class="modal" id="add-modal" style="padding: 10px 10px 10px 10px"></div>
+<div class="modal" id="edit-modal" style="padding: 10px 10px 10px 10px"></div>
+<div class="modal" id="detail-view" style="padding: 10px 10px 10px 10px"></div>
+
+
+
