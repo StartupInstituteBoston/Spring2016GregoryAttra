@@ -1,40 +1,45 @@
-<h1>Restaurants</h1>
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Address</th>
-		<th>Description</th>
-		<th>Phone</th>
-	</tr>
-
+<div class="col s8">
+	<div class="row">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text" style="text-align:center;">
+          <span class="card-title"><strong>RESTAURANTS</strong></span>
+          <p style="font-size:17px">Here you can view, edit and delete restaurants, as well as add new ones.</p>
+        </div>
+        <div class="card-action" style="text-align:center">
+          <a><%= link_to "Add Restaurant", { action: "new" } %></a>
+        </div>
+      </div>
+  </div>
+	<div class="row">
 	<% @restaurants.each do |restaurant| %>
-		<tr>
-			<td><%= restaurant.name %></td>
-			<td><%= restaurant.address %></td>
-			<td><%= restaurant.description %></td>
-			<td><%= restaurant.phone %></td>
-				<td><%= link_to("Show", :controller => :restaurants, :action => :show, :id => restaurant.id) %></td>
-				<td><%= link_to("Edit", :controller => :restaurants, :action => :edit, :id => restaurant.id) %></td>
-				<td><%= button_to "Delete", { action: "destroy", id: restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %></td>
-			</tr>
-		</tr>
-		<tr>
-			<td colspan=4>
-				<%= 
+	<div class="col s6" style="display:inline-block">
+		<div class="card">
+	    <div class="card-image waves-effect waves-block waves-light">
+	    	<%= 
 				address = restaurant.address
 				address = address.split(' ').join('+')
 				puts address
 
 				i = (restaurant.id).to_s
 
-				request = 'https://maps.googleapis.com/maps/api/staticmap?center='+address+'&zoom=16&size=800x200&markers=color:blue%7Clabel:'+i+'%7C'+address+'&key=AIzaSyC8XD1eo56__LnnKnOZsfozBdNSOPoup3A'
+				request = 'https://maps.googleapis.com/maps/api/staticmap?center='+address+'&zoom=16&size=800x200&markers=color:blue%7Clabel:%7C'+address+'&key=AIzaSyC8XD1eo56__LnnKnOZsfozBdNSOPoup3A'
 
 				image_tag(request) 
 				%>
-			</td>
-		</tr>
+	    </div>
+	    <div class="card-content">
+	      <span class="card-title activator grey-text text-darken-4"><%= restaurant.name %><i class="material-icons right">more_vert</i></span>
+	      <div class="card-action" style="text-align:center">
+	        <a href="#"><%= link_to("More", :controller => :restaurants, :action => :show, :id => restaurant.id) %></a>
+	        <a href="#"><%= link_to("Edit", :controller => :restaurants, :action => :edit, :id => restaurant.id) %></a>
+	        <a><%= link_to "Delete", { action: "destroy", id: restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %></a>
+	      </div>
+	    </div>
+	    <div class="card-reveal">
+	      <span class="card-title grey-text text-darken-4"><%= restaurant.name %><i class="material-icons right">close</i></span>
+	      <p><%= restaurant.description %></p>
+	    </div>
+	  </div>
+	</div>
 	<% end %>
-	<tr>
-		<td><%= link_to("Add Restaurant", :controller => :restaurants, :action => :new) %></td>
-	</tr>
-</table>
+</div>
