@@ -1,22 +1,26 @@
-<div class="card blue-grey darken-1">
-  <div class="card-content white-text" style="text-align:center;">
-    <span class="card-title"><strong>LOG IN</strong></span>
-  </div>
-</div>
-<div class="card">
-	<div class="card-content">
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-</div>
+<div style="margin:auto; width: 600px">
+	<div class="card blue-grey darken-1">
+	  <div class="card-content white-text" style="text-align:center;">
+	    <span class="card-title"><strong>LOG IN</strong></span>
+	  </div>
+	</div>
+	<div class="card">
+		<div class="card-content">
+		<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+		  <div class="form-inputs">
+		    <%= f.input :email, required: false, autofocus: true %>
+		    <%= f.input :password, required: false %>
+		    <span style="float:right"><%= link_to "Forgot your password?", new_password_path(resource_name) %></span>
+		    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %></br>
+		  </div>
+		  
+		  <div class="form-actions" style="text-align:center">
+		    <a class="waves-effect waves-light btn-large"><%= f.button :submit, "Log in" %></a></br>
+		  </div>
+		<% end %>
+			<div style="text-align:center; margin-top:10px">
+				<%= link_to "Sign up", new_registration_path(resource_name) %>
+			</div>
+		</div>
+	</div>
 </div>
