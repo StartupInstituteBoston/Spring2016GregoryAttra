@@ -24,7 +24,6 @@ $(document).ready(function(){
 		  success: function(response){
 		  	$('#edit-modal').html(response);
 		  	$('#edit-modal').openModal();
-		  	loadDetailjQuery()
 		  }
 		});
 		return false;
@@ -45,21 +44,5 @@ $(document).ready(function(){
 });
 
 
-function loadDetailjQuery() {
-	$('.editDetailRestaurant').click(function(e) {
-		$('#detail-view').closeModal();
-		e.preventDefault();
-		var url = ($(this).attr('href'));
-		$.ajax({
-		  url: url,
-		  success: function(response){
-		  	$('#edit-modal').html(response);
-		  	$('#edit-modal').openModal();
-		  	laodjQuery()
-		  }
-		});
-		return false;
-	});
-}
 
 

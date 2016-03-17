@@ -22,7 +22,7 @@
 
 				i = (restaurant.id).to_s
 
-				request = 'https://maps.googleapis.com/maps/api/staticmap?center='+address+'&zoom=16&size=800x200&markers=color:blue%7Clabel:%7C'+address+'&key=AIzaSyC8XD1eo56__LnnKnOZsfozBdNSOPoup3A'
+				request = 'https://maps.googleapis.com/maps/api/staticmap?center='+address+'&zoom=16&size=800x200&markers=color:red%7Clabel:%7C'+address+'&key=AIzaSyC8XD1eo56__LnnKnOZsfozBdNSOPoup3A'
 
 				image_tag(request) 
 				%>
@@ -44,8 +44,8 @@
 	<% end %>
 </div>
 
-<div class="modal" id="add-modal" style="padding: 10px 10px 10px 10px"></div>
-<div class="modal" id="edit-modal" style="padding: 10px 10px 10px 10px"></div>
+<div class="modal" id="add-modal" style="padding: 0px 10px 0px 10px"></div>
+<div class="modal" id="edit-modal" style="padding: 0px 10px 0px 10px"></div>
 <div class="modal" id="detail-view" style="padding: 10px 10px 10px 10px"></div>
 
 
