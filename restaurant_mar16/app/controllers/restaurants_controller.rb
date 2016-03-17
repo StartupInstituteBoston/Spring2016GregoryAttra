@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_filter :authenticate_owner!
   	def index 
   		@restaurants = Restaurant.all
   	end
@@ -11,7 +12,7 @@ class RestaurantsController < ApplicationController
     def create
   		@restaurant = Restaurant.new(restaurant_params)
   		@restaurant.save
-  		redirect_to restaurants_url
+  		redirect_to re
   	end
 
   	def show
