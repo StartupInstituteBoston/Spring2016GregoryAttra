@@ -5,34 +5,34 @@ class RestaurantsController < ApplicationController
   	end
 
   	def new
-  		@restaurant = Restaurant.new
+  		@restaurant = current_owner.restaurants.build
       render layout: false if request.xhr?
   	end
 
     def create
-  		@restaurant = Restaurant.new(restaurant_params)
+      @restaurant = current_owner.restaurants.build(restaurant_params)
   		@restaurant.save
-  		redirect_to re
+  		redirect_to restaurants_url
   	end
 
   	def show
-  		@restaurant = Restaurant.find(params[:id])
+  		@restaurant = Restaurants.find(params[:id])
       render layout: false if request.xhr?
   	end
 
     def edit 
-      @restaurant = Restaurant.find(params[:id])
+      @restaurant = current_owner.restaurants.find(params[:id])
       render layout: false if request.xhr?
     end
 
   	def update
-  		@restaurant = Restaurant.find(params[:id])
+  		@restaurant = current_owner.restaurants.find(params[:id])
   		@restaurant.update_attributes(restaurant_params)
   		redirect_to restaurants_url
   	end
 
   	def destroy
-  		@restaurant = Restaurant.find(params[:id])
+  		@restaurant = current_owner.restaurants.find(params[:id])
   		@restaurant.destroy
       redirect_to restaurants_url
   	end
