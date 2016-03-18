@@ -49,7 +49,9 @@
 	      <div class="card-action" style="text-align:center">
 	        <a href="#"><%= link_to "More", {:action => :show, :id => restaurant.id}, class: 'detailRestaurant' %></a>
 	        <a href="#"><%= link_to "Edit", {:action => :edit, :id => restaurant.id}, class: 'editRestaurant' %></a>
+	        <% if restaurant.owner_id == current_owner.id %>
 	        <a><%= link_to "Delete", { action: "destroy", id: restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %></a>
+	        <% end %>
 	      </div>
 	    </div>
 	    <div class="card-reveal">
