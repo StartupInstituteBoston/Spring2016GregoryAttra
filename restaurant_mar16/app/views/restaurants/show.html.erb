@@ -20,8 +20,10 @@
         <p><%= @restaurant.description %></p>
       </div>
       <div class="card-action">
-        <a href="#"><%= link_to "Edit", {:action => :edit, :id => @restaurant.id}, class: 'editDetailRestaurant' %></a>
-        <a><%= link_to "Delete", { action: "destroy", id: @restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %></a>
+        <% if current_owner && @restaurant.owner_id == current_owner.id %>
+        	<%= link_to "Edit", {:action => :edit, :id => restaurant.id}, class: 'editDetailRestaurant' %>
+        	<%= link_to "Delete", { action: "destroy", id: restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
       </div>
     </div>
   </div>

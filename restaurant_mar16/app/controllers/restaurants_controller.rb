@@ -16,7 +16,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def show
-		@restaurant = Restaurants.find(params[:id])
+		@restaurant = Restaurant.find(params[:id])
     render layout: false if request.xhr?
 	end
 
