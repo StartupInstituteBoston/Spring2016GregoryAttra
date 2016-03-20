@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :datetime %><br>
-    <%= f.datetime_select :datetime %>
+    <%= f.text_field :datetime %>
   </div>
   <div class="field">
     <%= f.label :message %><br>
@@ -28,6 +28,7 @@
     <%= f.text_field :restaurant_name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <a class="modal-action modal-close waves-effect waves-light btn-large red darken-2">Cancel</a>
+    <a class="waves-effect waves-light btn-large"><%= f.submit %></a>
   </div>
 <% end %>

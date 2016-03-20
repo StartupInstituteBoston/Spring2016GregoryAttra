@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320163203) do
+ActiveRecord::Schema.define(version: 20160320172313) do
 
   create_table "owners", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160320163203) do
 
   create_table "reservations", force: :cascade do |t|
     t.string   "email"
-    t.datetime "datetime"
+    t.string   "datetime"
     t.string   "message"
     t.string   "restaurant_name"
     t.datetime "created_at",      null: false

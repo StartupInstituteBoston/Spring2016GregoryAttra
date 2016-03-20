@@ -20,11 +20,15 @@
       <div class="card blue-grey darken-1">
         <div class="card-content white-text" style="text-align:center;">
           <span class="card-title"><strong>RESTAURANTS</strong></span>
+          <% if owner_signed_in? %>
           <p style="font-size:17px">Here you can view, edit and delete restaurants, as well as add new ones.</p>
+          <% end %>
         </div>
+        <% if owner_signed_in? %>
         <div class="card-action" style="text-align:center">
           <%= link_to "Add Restaurant", { action: "new" }, class: 'addRestaurant' %>
         </div>
+        <% end %>
       </div>
   </div>
 	<div class="row">
@@ -69,5 +73,5 @@
 <div class="modal" id="add-modal" style="padding: 0px 10px 0px 10px"></div>
 <div class="modal" id="edit-modal" style="padding: 0px 10px 0px 10px"></div>
 <div class="modal" id="detail-view" style="padding: 10px 10px 10px 10px"></div>
-<div class="modal" id="make-reservation-view" style=""></div>
+<div class="modal" id="make-reservation-view" style="padding: 0px 10px 0px 10px"></div>
 </div>
