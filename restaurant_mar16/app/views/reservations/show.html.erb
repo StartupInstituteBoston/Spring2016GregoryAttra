@@ -1,26 +1,47 @@
-<div class="card-content">
-  <p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-content">
+    <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= @reservation.email %>
-  </p>
+    <p>
+      <strong>Email:</strong>
+      <%= @reservation.email %>
+    </p>
 
-  <p>
-    <strong>Datetime:</strong>
-    <%= @reservation.datetime %>
-  </p>
+    <p>
+      <strong>Datetime:</strong>
+      <%= @reservation.datetime %>
+    </p>
 
-  <p>
-    <strong>Message:</strong>
-    <%= @reservation.message %>
-  </p>
+    <p>
+      <strong>Message:</strong>
+      <%= @reservation.message %>
+    </p>
 
-  <p>
-    <strong>Restaurant name:</strong>
-    <%= @reservation.restaurant_name %>
-  </p>
+    <p>
+      <strong>Restaurant name:</strong>
+      <%= @reservation.restaurant_name %>
+    </p>
 
-  <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-  <%= link_to 'Cancel', reservations_path %>
+    <br>
+    <%= link_to 'Edit', edit_reservation_path(@reservation), class: "waves-effect waves-light btn-large editDetailReservation"%>
+    <a class="modal-action modal-close waves-effect waves-light btn-large red darken-2">Close</a>
+  </div>
 </div>
+
+<script>
+$(document).ready(function(){
+	$('.editDetailReservation').on('click', function(e) {
+		e.preventDefault();
+		var url = ($(this).attr('href'));
+		$.ajax({
+		  url: url,
+		  success: function(response){
+		  	$('#show-reservation').closeModal();
+		  	$('#edit-reservation').html(response);
+		  	$('#edit-reservation').openModal();
+		  }
+		});
+		return false;
+	});
+});
+</script>

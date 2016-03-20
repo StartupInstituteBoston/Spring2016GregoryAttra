@@ -17,52 +17,44 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = Reservation.new
-    @restaurant = Restaurant.find(params[:id])
     render layout: false if request.xhr?
   end
 
   # GET /reservations/1/edit
   def edit
+    @reservation = Reservation.find(params[:id])
+    render layout: false if request.xhr?
   end
 
   # POST /reservations
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-
-    respond_to do |format|
-      if @reservation.save
-        #format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        #format.json { render :show, status: :created, location: @reservation }
-      else
-        #format.html { render :new }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+    @reservation.save
+    redirect_to reservations_url
+    # respond_to do |format|
+    #   if @reservation.save
+    #     format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+    #     format.json { render :show, status: :created, location: @reservation }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @reservation.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
-    respond_to do |format|
-      if @reservation.update(reservation_params)
-        #format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @reservation }
-      else
-        #format.html { render :edit }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+    @reservation.update(reservation_params)
+    redirect_to reservations_url
   end
 
   # DELETE /reservations/1
   # DELETE /reservations/1.json
   def destroy
     @reservation.destroy
-    respond_to do |format|
-      #format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
-      #format.json { head :no_content }
-    end
+    redirect_to reservations_url
   end
 
   private
