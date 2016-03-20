@@ -4,13 +4,13 @@
   <div class="col s12">
     <div class="card" style="margin-bottom:0px">
       <div class="card-image">
-        <%= 
+        <%=
 				address = @restaurant.address
 				address = address.split(' ').join('+')
 
 				request = 'https://maps.googleapis.com/maps/api/staticmap?center='+address+'&zoom=16&size=800x200&markers=color:blue%7Clabel:%7C'+address+'&key=AIzaSyC8XD1eo56__LnnKnOZsfozBdNSOPoup3A'
 
-				image_tag(request) 
+				image_tag(request)
 				%>
       </div>
       <div class="card-content">
@@ -25,6 +25,7 @@
         	<%= link_to "Delete", { action: "destroy", id: @restaurant.id }, method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
       </div>
+			<div id="reservation-form"></div>
     </div>
   </div>
 <script>

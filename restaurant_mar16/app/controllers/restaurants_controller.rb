@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   #before_filter :authenticate_owner!
-  
-	def index 
+
+	def index
 		@restaurants = Restaurant.all
 	end
 
@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
     render layout: false if request.xhr?
 	end
 
-  def edit 
+  def edit
     @restaurant = current_owner.restaurants.find(params[:id])
     render layout: false if request.xhr?
   end
@@ -38,8 +38,8 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_url
 	end
 
-	private 
+	private
   def restaurant_params
-		params.require(:restaurant).permit(:id, :address, :city, :state, :zipcode, :description, :name, :phone)	
+		params.require(:restaurant).permit(:id, :address, :city, :state, :zipcode, :description, :name, :phone)
 	end
 end

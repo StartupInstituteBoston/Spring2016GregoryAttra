@@ -41,8 +41,18 @@ $(document).ready(function(){
 		});
 		return false;
 	});
+
+	$('.makeReservation').click(function(e) {
+		e.preventDefault();
+		var url = ($(this).attr('href'));
+		$.ajax({
+		  url: url,
+		  success: function(response){
+		  	$('#make-reservation-view').html(response);
+		  	$('#make-reservation-view').openModal();
+		  }
+		});
+		return false;
+	});
+
 });
-
-
-
-
