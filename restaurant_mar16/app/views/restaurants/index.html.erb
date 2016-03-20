@@ -27,6 +27,7 @@
         <% if owner_signed_in? %>
         <div class="card-action" style="text-align:center">
           <%= link_to "Add Restaurant", { action: "new" }, class: 'addRestaurant' %>
+          <%= link_to "View Reservations", { controller: "reservations", action: "index" } %>
         </div>
         <% end %>
       </div>

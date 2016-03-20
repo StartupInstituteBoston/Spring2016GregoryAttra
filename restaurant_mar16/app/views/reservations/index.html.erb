@@ -19,6 +19,12 @@
   <div class="card-content white-text" style="text-align:center">
     <span class="card-title"><strong>YOUR RESERVATIONS</strong></span>
   </div>
+  <% if owner_signed_in? %>
+  <div class="card-action" style="text-align:center">
+    <%= link_to "View Restaurants", { controller: "restaurants", action: "index" } %>
+    <%= link_to "Make A Reservation", { controller: "reservations", action: "new" }, class: "makeNewReservation" %>
+  </div>
+  <% end %>
 </div>
 
 <div class="card">
@@ -43,8 +49,10 @@
             <td><%= reservation.message %></td>
             <td><%= reservation.restaurant_name %></td>
             <td><%= link_to 'Show', reservation, class: "showReservation" %></td>
+            <% if owner_signed_in? %>
             <td><%= link_to 'Edit', edit_reservation_path(reservation), class: "editReservation" %></td>
             <td><%= link_to 'Delete', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
@@ -53,5 +61,6 @@
   </div>
 </div>
 
+<div class="modal" id="make-new-reservation-view" style="padding: 0px 10px 0px 10px"></div>
 <div class="modal" id="show-reservation" style="padding: 10px 10px 10px 10px"></div>
 <div class="modal" id="edit-reservation" style="padding: 0px 10px 0px 10px"></div>

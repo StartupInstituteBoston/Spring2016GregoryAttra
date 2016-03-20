@@ -28,4 +28,17 @@ $(document).ready(function(){
 		return false;
   });
 
+  $('.makeNewReservation').click(function(e) {
+		e.preventDefault();
+		var url = ($(this).attr('href'));
+		$.ajax({
+		  url: url,
+		  success: function(response){
+		  	$('#make-new-reservation-view').html(response);
+		  	$('#make-new-reservation-view').openModal();
+		  }
+		});
+		return false;
+	});
+
 });
